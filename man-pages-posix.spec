@@ -4,9 +4,9 @@
 #
 Name     : man-pages-posix
 Version  : 2013.a
-Release  : 1
-URL      : https://mirrors.edge.kernel.org/pub/linux/docs/man-pages/man-pages-posix/man-pages-posix-2013-a.tar.xz
-Source0  : https://mirrors.edge.kernel.org/pub/linux/docs/man-pages/man-pages-posix/man-pages-posix-2013-a.tar.xz
+Release  : 2
+URL      : https://mirrors.kernel.org/pub/linux/docs/man-pages/man-pages-posix/man-pages-posix-2013-a.tar.xz
+Source0  : https://mirrors.kernel.org/pub/linux/docs/man-pages/man-pages-posix/man-pages-posix-2013-a.tar.xz
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : Distributable
@@ -36,26 +36,27 @@ man components for the man-pages-posix package.
 
 %prep
 %setup -q -n man-pages-posix-2013-a
+cd %{_builddir}/man-pages-posix-2013-a
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
-export LANG=C
-export SOURCE_DATE_EPOCH=1560377312
+export LANG=C.UTF-8
+export SOURCE_DATE_EPOCH=1604099117
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
 export NM=gcc-nm
 export CFLAGS="$CFLAGS -O3 -ffat-lto-objects -flto=4 "
-export FCFLAGS="$CFLAGS -O3 -ffat-lto-objects -flto=4 "
-export FFLAGS="$CFLAGS -O3 -ffat-lto-objects -flto=4 "
+export FCFLAGS="$FFLAGS -O3 -ffat-lto-objects -flto=4 "
+export FFLAGS="$FFLAGS -O3 -ffat-lto-objects -flto=4 "
 export CXXFLAGS="$CXXFLAGS -O3 -ffat-lto-objects -flto=4 "
-make  %{?_smp_mflags} screen
+make  %{?_smp_mflags}  screen
 
 
 %install
-export SOURCE_DATE_EPOCH=1560377312
+export SOURCE_DATE_EPOCH=1604099117
 rm -rf %{buildroot}
 %make_install
 
